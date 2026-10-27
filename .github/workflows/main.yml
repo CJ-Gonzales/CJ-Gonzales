@@ -1,0 +1,34 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main" ] # Change to your default branch name if different
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        cache: 'gradle'
+
+    - name: Grant Execute Permission for Gradle Wrapper
+      run: chmod +x ./gradlew
+
+    - name: Compile and Assemble Debug APKs
+      run: ./gradlew assembleDebug
+
+    - name: Upload Finished APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ai-studio-app-debug-apk
+        path: app/build/outputs/apk/debug/app-debug.apk

@@ -1,0 +1,8 @@
+{
+  "name": "Kusina ni Bossing - 2D Karinderya Simulator",
+  "description": "A charming 2D Filipino karinderya management game with authentic ulam cooking, suki customers, staff automation, and restaurant decor upgrades.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
